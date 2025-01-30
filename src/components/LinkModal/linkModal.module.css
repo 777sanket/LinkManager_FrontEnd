@@ -1,0 +1,265 @@
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap');
+
+.modalOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+  font-family: "Manrope", sans-serif;
+  /* color: white; */
+  font-size: 1rem;
+}
+
+.modalBox {
+  position:  absolute;
+  z-index: 10000;
+  background: #fff;
+  width: 35%;
+  height: 80%;
+  /* padding: 20px; */
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  position: relative;
+}
+
+.modalHeader {
+  padding: 1rem;
+  height: 4%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  background-color: #3B3C51;
+  font-size: 1.2rem;
+  font-weight: 500;
+  color: white;
+  border: none;
+}
+
+.closeBtn {
+  background: none;
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.modalContent {
+  font-size: 16px;
+  color: #333;
+}
+
+.formContainer {
+  /* border: 1px solid blue; */
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  /* overflow-y: auto; */
+}
+
+.formContent {
+  display: flex;
+  flex-direction: column;
+  /* border: 1px solid #0e0e9d; */
+  height: 88%;
+}
+
+.toggleContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 45px;
+  height: 24px;
+}
+
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  transition: 0.4s;
+  border-radius: 20px;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 20px;
+  width: 20px;
+  left: 2px;
+  bottom: 2px;
+  background-color: white;
+  transition: 0.4s;
+  border-radius: 50%;
+}
+
+input:checked + .slider {
+  background-color: #4A70D1;
+}
+
+input:checked + .slider:before {
+  transform: translateX(20px);
+}
+
+
+.inputContainer {
+  display: flex;
+  flex-direction: column;
+  margin: 1rem;
+}
+
+.inputContainer label {
+  margin-bottom: 0.7rem;
+}
+
+.inputContainer input {
+  height: 2.7rem;
+  border: 1px solid #D1D5DB;
+  border-radius: 4px;
+  padding: 0 1rem;
+}
+
+.inputContainer input::placeholder {
+  font-size: 1.1rem;
+  color: #B3B3B3;
+}
+
+.inputContainer textarea {
+  height: 7rem;
+  border: 1px solid #D1D5DB;
+  border-radius: 4px;
+  padding: 0.5rem 1rem;
+}
+
+
+.btnContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex: 1;
+  padding: 0 5%;
+  background-color: #3b3c511a;
+}
+
+.clearBtn  {
+  background: none;
+  border: none;
+  color: #3B3C51;
+  font-size: 1.2rem;
+}
+
+.submitBtn  {
+  background-color: #1B48DA;
+  border: none;
+  color: #3B3C51;
+  font-size: 1.2rem;
+  color: white;
+  height: 65%;
+  border-radius: 6px;
+  padding: 0 1rem;
+}
+
+
+.dateTimeContainer {
+  display: flex;
+  gap: 10px;
+  margin-top: 10px;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.dateInput,
+.timeInput {
+  width: 50%; 
+  /* padding: 10px; */
+  font-size: 14px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+}
+
+.formattedDateTime {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 10px;
+  font-size: 16px;
+  color: #333;
+  height: 2.7rem;
+  border: 1px solid #D1D5DB;
+  border-radius: 4px;
+  padding: 0 1rem;
+}
+
+
+@media (max-width: 768px) {
+  .modalOverlay{
+    z-index: 11000;
+  }
+  .modalOverlayLinks {
+    z-index: 10000;
+  }
+  .modalBox {
+    width: 80%;
+    height: 90%;
+  }
+
+  .modalHeader {
+    font-size: 1rem;
+    padding: 1rem 0 1rem 1rem;
+  }
+
+  .closeBtn img {
+    transform: scale(0.8);
+  }
+
+  .clearBtn {
+    font-size: 0.8rem;
+  }
+
+  .submitBtn {
+    font-size: 0.8rem;
+  }
+
+  .inputContainer {
+    margin: 0.5rem;
+  }
+
+  .inputContainer label {
+    margin-bottom: 0.5rem;
+  }
+
+  .inputContainer input::placeholder {
+    font-size: 0.8rem;
+    color: #B3B3B3;
+  }
+
+  .dateInput,
+.timeInput {
+  width: 30%; 
+  /* padding: 10px; */
+  font-size: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+}
+}

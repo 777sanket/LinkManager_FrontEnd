@@ -1,0 +1,300 @@
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap');
+
+.navbarContainer {
+  position: absolute;
+  width: 100vw;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  font-family: "Manrope", sans-serif;
+  border-bottom: 2px solid #f6f6f9;
+  background-color: white;
+}
+
+.leftPart {
+  display: flex;
+}
+
+.logoImg {
+  padding: 1.5rem 1.5rem 1rem 1.5rem;
+  width: 10rem;
+  position: relative;
+  margin-bottom: 2.5rem;
+}
+
+.logoImg img {
+  padding: 1.5rem 1.5rem 1rem 1.5rem;
+  position: absolute;
+  top: 0;
+  left: 0.5rem;
+  /* z-index: 1000; */
+  /* transform: translateX(-0.5rem); */
+}
+.greetings {
+  display: flex;
+  align-items: center;
+  justify-content: end;
+ 
+  width: 20rem;
+  padding-bottom: 1rem;
+}
+
+.sunImg {
+  margin-right: 0.3rem;
+}
+
+.greetingText {
+  display: flex;
+  align-items: start;
+  flex-direction: column;
+  line-height: 0.3rem;
+}
+
+
+.rightPart {
+  display: flex;
+  align-items: center;
+  justify-content: end;
+  gap: 6rem;
+  /* padding: 0 1.5rem; */
+  width: 50%;
+}
+
+.greetingText {
+  display: flex;
+}
+
+.createContainer {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.createBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 9rem;
+  font-size: 1rem;
+  background-color: #1B48DA;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  font-family: "Manrope", sans-serif;
+  height: 2.7rem;
+}
+
+.createBtn img {
+  margin-right: 0.5rem;
+}
+
+.profileContainer {
+  padding-right: 1.5rem;
+}
+
+.searchContainer {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  border: 2px solid #ECECF2;
+  box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.25);
+  height: 2.7rem;
+  width: 15rem;
+  padding: 0 0.5rem;
+  border-radius: 10px;
+}
+
+
+
+.searchInp {
+  border: none;
+  font-family: "Manrope", sans-serif;
+  outline: none;
+  font-size: 1rem;
+}
+
+.searchInp:focus {
+  border: none;
+}
+
+.searchInp::placeholder {
+  font-size: 1rem;
+}
+
+/* .profileContainer {
+  display: grid;
+  place-items: center;
+  margin-right: 1.5rem;
+  align-items: center;
+  justify-content: center;
+  height: 2.7rem;
+  
+  border-radius: 50%;
+  background-color: #ECECF2;
+} */
+
+/* .profileContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.8rem;
+  height: 2.8rem;
+  border-radius: 50%;
+  background-color: #FDE48A;
+  font-family: "Manrope", sans-serif;
+  font-size: 1rem;
+  color: #923E0E;
+  margin-right: 1.5rem;
+  text-align: center;
+  padding: 0;
+  font-weight: 600;
+} */
+
+.profileContainer {
+  position: relative;
+  margin-right: 0.5rem;
+  width: 2.8rem;
+  height: 2.8rem;
+  cursor: pointer;
+  z-index: 10000;
+}
+
+.initials {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  width: 2.8rem;
+
+  height: 2.8rem;
+  background-color: #FDE48A;
+  font-family: "Manrope", sans-serif;
+  font-size: 1rem;
+  color: #923E0E;
+  
+  text-align: center;
+  padding: 0;
+  font-weight: 600;
+}
+
+
+.logoutBtn {
+  position: absolute;
+  top: 3rem;
+  height: 1.8rem;
+  width: 7rem;
+  right: 1.5rem;
+  background-color: white;
+  border: 1.5px solid #ECECF2;
+  border-radius: 4px;
+  color: #878BA9;
+  z-index: 11000;
+}
+
+
+
+
+
+
+
+/* Media queries */
+
+
+@media (max-width: 768px) {
+  .navbarContainer {
+    border-bottom: none;
+    position: fixed;
+    /* overflow: hidden; */
+  }
+
+  .leftPart {
+    width: 100%;
+    justify-content: space-between;
+    gap: 5rem;
+  }
+
+  .logoImg {
+    padding: 1rem 1rem 0.8rem 0rem;
+    transform: scale(0.8);
+  }
+  
+  .logoImg img {
+    left: 0;
+    z-index: 1000;
+  }
+  .greetings {
+    width: 100%;
+  }
+
+  .greetingText {
+    font-size: 0.85rem;
+    /* flex-wrap: wrap; */
+    line-height: 0.9rem;
+  }
+
+  .rightPart {
+    width: 100%;
+    gap: 1rem;
+    justify-content: space-between;
+  }
+
+  .createContainer {
+    gap: 0.5rem;
+    padding-left: 7%;
+  }
+
+  .createBtn {
+    width: 7rem; 
+    font-size: 0.8rem; 
+    height: 2rem; 
+  }
+  
+  .createBtn img {
+    transform: scale(0.7);
+    margin-right: 0;
+  }
+
+  .searchContainer {
+    width: 9.5rem; 
+    height: 2rem; 
+    gap: 0.3rem; 
+    box-shadow: none;
+  }
+
+  .searchInp {
+    width: 100%;
+    padding: 0;
+    font-size: 0.8rem;
+  }
+
+  .searchInp::placeholder {
+    font-size: 0.8rem;
+  }
+  
+  .searchContainer img {
+    transform: scale(0.7);
+  }
+  
+  .profileContainer {
+    width: 2.2rem; 
+    height: 2.2rem; 
+    font-size: 0.8rem; 
+    margin-right: 0.8rem;
+    padding: 0;
+  }
+
+  .initials {
+    width: 2.2rem; 
+    height: 2.2rem;
+    font-size: 0.8rem;
+  }
+
+  .logoutBtn {
+    top: 2.5rem;
+    right: 0.3rem;
+    z-index: 11000;
+  }
+
+
+}

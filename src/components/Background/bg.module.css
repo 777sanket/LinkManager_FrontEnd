@@ -1,0 +1,21 @@
+.bgContainer {
+  /* border: 2px solid rgb(235, 29, 29); */
+  height: 100vh;
+}
+
+.bgContainer img {
+  width: 100%;
+  height: 100%;
+  /* object-fit: cover; */
+}
+
+@media (max-width: 768px) {
+  .bgContainer img {
+    width: 100%;
+    height: 100%;
+  }
+
+  .bgContainer {
+    display: none;
+  }
+}
