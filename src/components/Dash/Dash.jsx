@@ -18,10 +18,8 @@ export default function Dash() {
       setTotalClicks(totalClicksData.totalClicks);
 
       const dateWiseData = await getDateWiseClicks();
-      dateWiseData.clicksByDate.reverse();
-      const mainData = calculateDateWisePercentage(dateWiseData.clicksByDate);
-      mainData.reverse();
-      setDateWiseClicks(mainData);
+      const array1 = dateWiseData.clicksByDate;
+      setDateWiseClicks(array1);
 
       const deviceWiseData = await getDeviceWiseClicks();
       setDeviceWiseClicks(
@@ -34,22 +32,6 @@ export default function Dash() {
 
     fetchData();
   }, []);
-
-  function calculateDateWisePercentage(clicks) {
-    let previousTotal = 0;
-    return clicks.map((click, index) => {
-      const currentTotal = click.clicks + previousTotal;
-      const percentageIncrease =
-        index === 0 ? 100 : ((currentTotal / previousTotal) * 100).toFixed(2);
-      previousTotal = currentTotal;
-
-      return {
-        _id: click._id.slice(0, 6) + click._id.slice(8, 10),
-        clicks: currentTotal,
-        percentageIncrease,
-      };
-    });
-  }
 
   function calculateDevicePercentages(devices, totalClicks) {
     return devices.map((device) => ({
@@ -89,15 +71,15 @@ export default function Dash() {
                   }}
                   variant="body2"
                 >
-                  {click._id}
+                  {click._id.slice(0, 6) + click._id.slice(8, 10)}
                 </Typography>
                 <LinearProgress
                   className={styles.bar}
                   variant="determinate"
-                  value={(click.clicks / totalClicks) * 100}
+                  value={(click.clicks / totalClicks) * 95}
                   sx={{
                     height: 20,
-                    backgroundColor: "#f0f0f0",
+                    backgroundColor: "white",
                     "& .MuiLinearProgress-bar": { backgroundColor: "#1E40AF" },
                   }}
                 />
@@ -135,7 +117,7 @@ export default function Dash() {
                   value={device.percentage}
                   sx={{
                     height: 20,
-                    backgroundColor: "#f0f0f0",
+                    backgroundColor: "white",
                     "& .MuiLinearProgress-bar": { backgroundColor: "#1E40AF" },
                   }}
                 />
