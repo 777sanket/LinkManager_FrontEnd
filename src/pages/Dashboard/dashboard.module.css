@@ -5,7 +5,6 @@
   display: flex;
   flex-direction: column;
   overflow: auto; 
-  
 }
 
 .navBarItem {
@@ -18,14 +17,11 @@
   flex-direction: row;
   flex: 1;
   width: 100%;
-  /* height: 91.5%; */
-
-  overflow: auto;
-  
+ 
 }
 
 .mainContent {
-  /* border: 5px solid black; */
+ 
   height: 100%;
   width: 80%;
   color: black;
@@ -35,23 +31,20 @@
 }
 
 .mainContainerx {
-  /* border: 7px solid rgb(181, 12, 12); */
+
   height: 100%;
   width: 100%;
   overflow: hidden;
 }
 
 .sideBarItem {
-  /* position: absolute; */
-  /* border: 2px solid black; */
   z-index: 1000;
   width: 20%;
-  
+  overflow: none;
 }
 
 @media (max-width: 768px) {
   .navBarItem {
-    /* position: absolute; */
     z-index: 10000;
     height: 19%;
     background-color: white;
@@ -59,31 +52,26 @@
   }
 
   .sideBarItem {
-    /* position: absolute; */
     margin-top: 0;
     width: 100%;
-    /* display: none; */
+    position: fixed;
+    
   }
 
   .mainContent {
     position: absolute;
-    /* display: block; */
     width: 100%;
     margin-top: 3rem;
     overflow: hidden;
-    /* background-color: white; */
-    z-index: 1000;
-    /* display: none; */
   }
 
   .mainContainerx {
-    /* height: 100%; */
     overflow: hidden;
     
   }
 
   .hiddenContent {
-    display: none; /* Hide content when sidebar is open */
+    display: none; 
   }
   
 }

@@ -20,23 +20,10 @@ export default function Links({
   filters,
   setLinks,
 }) {
-  // const [links, setLinks] = useState([]);
-  // const [pagination, setPagination] = useState({
-  //   currentPage: 1,
-  //   totalPages: 1,
-  // });
-  // const [filters, setFilters] = useState({
-  //   page: 1,
-  //   limit: 3,
-  //   sortBy: "dateCreated",
-  //   order: "desc",
-  //   statusSort: "",
-  //   search: search,
-  // });
   const [isLinkModalOpen, setIsLinkModalOpen] = useState(false);
   const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
   const [selectedLink, setSelectedLink] = useState(null);
-  const [showCopyMessage, setShowCopyMessage] = useState(false); // ✅ State for copy message
+  const [showCopyMessage, setShowCopyMessage] = useState(false);
 
   useEffect(() => {
     setFilters((prev) => ({ ...prev, search }));
@@ -62,64 +49,20 @@ export default function Links({
     setSelectedLink(null);
   };
 
-  // useEffect(() => {
-  //   const fetchLinks = async () => {
-  //     try {
-  //       const response = await getLinks(filters);
-  //       if (!response.ok) {
-  //         throw new Error(`Error: ${response.status} ${response.statusText}`);
-  //       }
-  //       const data = await response.json();
-  //       setLinks(data.links);
-  //       setPagination({
-  //         currentPage: data.pagination.currentPage,
-  //         totalPages: data.pagination.totalPages,
-  //       });
-  //     } catch (error) {
-  //       console.error("Error fetching links:", error.message);
-  //     }
-  //   };
-  //   fetchLinks();
-  // }, [filters]);
-
-  // ✅ Extract fetchLinks function so it can be called manually
-  // const fetchLinks = async () => {
-  //   try {
-  //     const response = await getLinks(filters);
-  //     if (!response.ok) {
-  //       throw new Error(`Error: ${response.status} ${response.statusText}`);
-  //     }
-  //     const data = await response.json();
-  //     setLinks(data.links);
-  //     setPagination({
-  //       currentPage: data.pagination.currentPage,
-  //       totalPages: data.pagination.totalPages,
-  //     });
-  //   } catch (error) {
-  //     console.error("Error fetching links:", error.message);
-  //   }
-  // };
-
-  // ✅ Fetch links when component mounts and when filters change
   useEffect(() => {
     fetchLinks();
   }, [filters]);
 
   const handleCopy = async (shortenedLink) => {
     try {
-      await navigator.clipboard.writeText(shortenedLink); // Copy to clipboard
-      setShowCopyMessage(true); // Show notification
-      setTimeout(() => setShowCopyMessage(false), 3000); // Hide after 3 seconds
-      // alert("Shortened link copied to clipboard!");
+      await navigator.clipboard.writeText(shortenedLink);
+      setShowCopyMessage(true);
+      setTimeout(() => setShowCopyMessage(false), 3000);
     } catch (error) {
       console.error("Failed to copy the link:", error.message);
       alert("Failed to copy the link. Please try again.");
     }
   };
-
-  // const handlePageChange = (newPage) => {
-  //   setFilters((prev) => ({ ...prev, page: newPage }));
-  // };
 
   const handlePageChange = (newPage) => {
     setFilters((prev) => ({ ...prev, page: newPage }));
@@ -155,11 +98,6 @@ export default function Links({
       order: prev.order === "desc" ? "asc" : "desc",
     }));
   };
-
-  // const handleStatusFilter = (statusSort) => {
-  //   setFilters((prev) => ({ ...prev, statusSort }));
-  // };
-
   const handleDeleteConfirm = async () => {
     try {
       const response = await deleteLink(selectedLink);
@@ -219,16 +157,12 @@ export default function Links({
               <th style={{ maxWidth: "250px" }}>Short Links</th>
               <th>Remarks</th>
               <th>Clicks</th>
-              <th>
+              <th style={{ display: "flex", alignItems: "center" }}>
                 Status
                 <button
                   onClick={() =>
                     setFilters((prev) => ({
                       ...prev,
-                      // statusSort:
-                      //   prev.statusSort === "activeFirst"
-                      //     ? "inactiveFirst"
-                      //     : "activeFirst",
                       statusSort:
                         prev.statusSort === "activeFirst"
                           ? "inactiveFirst"
@@ -248,14 +182,13 @@ export default function Links({
             {links.map((link) => (
               <tr key={link.id}>
                 <td data-label="Date">
-                  {/* {new Date(link.dateCreated).toLocaleString()} */}
                   {new Intl.DateTimeFormat("en-US", {
                     month: "short",
                     day: "2-digit",
                     year: "numeric",
                     hour: "2-digit",
                     minute: "2-digit",
-                    hour12: false, // Uses 24-hour format, set `true` for 12-hour format
+                    hour12: false,
                   }).format(new Date(link.dateCreated))}
                 </td>
                 <td
@@ -276,7 +209,6 @@ export default function Links({
                 >
                   <div
                     style={{
-                      // width: "80%",
                       overflow: "hidden",
                     }}
                   >
@@ -286,11 +218,7 @@ export default function Links({
                     className={styles.copyBtn}
                     onClick={() => handleCopy(link.shortenedLink)}
                   >
-                    <img
-                      // style={{ position: "relative", top: "2px" }}
-                      src={CopyI}
-                      alt="copy"
-                    />
+                    <img src={CopyI} alt="copy" />
                   </button>
                 </td>
                 <td
@@ -300,7 +228,7 @@ export default function Links({
                   {link.remark}
                 </td>
                 <td data-label="Clicks">{link.clicks}</td>
-                {/* <td data-label="Status">{link.status}</td> */}
+
                 <td
                   data-label="Status"
                   className={
@@ -309,7 +237,6 @@ export default function Links({
                       : styles.inactiveStatus
                   }
                 >
-                  {/* {link.status} */}
                   {link.status.charAt(0).toUpperCase() + link.status.slice(1)}
                 </td>
                 <td data-label="Action">
@@ -317,11 +244,7 @@ export default function Links({
                     className={styles.editBtn}
                     onClick={() => openLinkModal(link)}
                   >
-                    <img
-                      // onClick={() => openLinkModal(link)}
-                      src={Edit}
-                      alt="edit"
-                    />
+                    <img src={Edit} alt="edit" />
                   </button>
                   <button
                     className={styles.deleteBtn}
@@ -335,33 +258,6 @@ export default function Links({
           </tbody>
         </table>
       </div>
-      {/* <div className={styles.pagination}>
-        <button
-          onClick={() => handlePageChange(pagination.currentPage - 1)}
-          disabled={pagination.currentPage === 1}
-          className={styles.paginationBtn}
-        >
-          &lt;
-        </button>
-        {Array.from({ length: pagination.totalPages }, (_, index) => (
-          <button
-            key={index + 1}
-            onClick={() => handlePageChange(index + 1)}
-            className={`${styles.paginationNumber} ${
-              pagination.currentPage === index + 1 ? styles.activePage : ""
-            }`}
-          >
-            {index + 1}
-          </button>
-        ))}
-        <button
-          onClick={() => handlePageChange(pagination.currentPage + 1)}
-          disabled={pagination.currentPage === pagination.totalPages}
-          className={styles.paginationBtn}
-        >
-          &gt;
-        </button>
-      </div> */}
 
       <div className={styles.pagination}>
         <button

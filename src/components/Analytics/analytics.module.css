@@ -1,7 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap');
 
 .analyticsContainer {
-  /* background-color: rgb(137, 160, 179); */
   display: flex;
   height: 91.5%;
   width: 80%;
@@ -11,45 +10,26 @@
   position: fixed;
   z-index: 2000;
   font-family: 'Manrope', sans-serif;
-  
 }
 
-
-
-/* Table Container */
 .tableContainer {
-  /* background-color: #f9f9f9; */
   width: 92%;
-  overflow-x: auto; /* Enable horizontal scrolling */
+  overflow-x: auto;
   overflow-y: auto;
   margin: 20px;
   border-radius: 12px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   border: 1px solid #f1f1f1;
-  /* border: 4px solid red; */
-  /* position: fixed; */
 }
 
 
-
-
-/* Main Table */
 .table {
   width: 100%;
   border-collapse: collapse;
-  /* margin: 20px ; */
   font-size: 1rem;
   overflow: hidden;
-
 }
 
-/* .table th,
-.table td {
-  
-  padding: 10px;
-  text-align: left;
-  border: 1px solid #ddd;
-} */
 
 
 .table th,
@@ -103,15 +83,12 @@
 
 .paginationNumber {
   border: none;
-  /* background: #d32020; */
   padding: 0.5rem 1rem;
   font-size: 1rem;
   cursor: pointer;
   border-radius: 4px;
   transition: background-color 0.3s ease;
 }
-
-
 
 .activePage {
   background-color: #1b48da;
@@ -121,47 +98,10 @@
 
 
 @media (max-width: 768px) {
-
-
   .analyticsContainer {
     display: flex;
-
-    /* overflow: hidden; */
     width: 100%;
     height: 75%;
     z-index: 9999;
   }
-
-
-  /* .tableContainer {
-    width: 100vw;
-    overflow-x: auto;
-    background-color: white;
-   
-  }
-
-  .filterContainer {
-    flex-direction: column;
-    gap: 10px;
-  }
-
-  .dateInput {
-    width: 100%;
-  }
-
-  .table {
-    font-size: 14px;
-  }
-
-  .table th,
-  .table td {
-    font-size: 12px;
-    padding: 8px;
-  }
-
-  .paginationBtn,
-  .paginationNumber {
-    padding: 5px 10px;
-    font-size: 12px;
-  } */
 }

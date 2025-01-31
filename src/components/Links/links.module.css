@@ -2,7 +2,6 @@
 
 .linksContainer {
   width: 80%;
-  /* background-color: rgb(20, 127, 220); */
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -13,22 +12,9 @@
   font-family: 'Manrope', sans-serif;
 }
 
-
-
-/* @media (max-width: 768px) {
-  .dashContainer {
-    flex-direction: column;
-    width: 100%;
-    height: 80%;
-    z-index: 2000;
-  }
-} */
-
-/* Table Container */
 .tableContainer {
-  /* background-color: #f9f9f9; */
   width: 93%;
-  overflow-x: auto; /* Enable horizontal scrolling */
+  overflow-x: auto; 
   overflow-y: auto;
   margin: 20px;
   border-radius: 12px;
@@ -36,19 +22,15 @@
   border: 1px solid #f1f1f1;
 }
 
-/* Main Table */
+
 .table {
   width: 100%;
   border-collapse: collapse;
-  /* margin: 20px 7px; */
   table-layout: fixed;
   font-size: 1rem;
   overflow: hidden;
 }
 
-/* .orignalLinkContainer {
-  width: 10px;
-} */
 
 .table th,
 .table td {
@@ -59,16 +41,12 @@
   overflow: hidden;
   height: 3rem;
 }
-/* 
-.orignalLinkContainer {
-  width: 10px;
-} */
 
 .table th {
   height: 3rem;
   background-color: #f3f7fd;
   position: relative;
-  /* z-index: 2; */
+  z-index: 2;
   border: none;
 }
 
@@ -98,7 +76,6 @@
 
 .paginationNumber {
   border: none;
-  /* background: #d32020; */
   padding: 0.5rem 1rem;
   font-size: 1rem;
   cursor: pointer;
@@ -136,24 +113,14 @@
 
 .activeStatus {
   color: #1EB036;
-  /* background-color: #28a745;  */
-  /* padding: 5px 10px; */
-  /* border-radius: 5px; */
-  /* font-weight: bold; */
-  /* text-align: center; */
 }
 
 .inactiveStatus {
   color: #B0901E;
-  /* background-color: #28a745;  */
-  /* padding: 5px 10px; */
-  /* border-radius: 5px; */
-  /* font-weight: bold; */
-  /* text-align: center; */
 }
 
 .copyMessage {
-  width: 10%;
+  width: 15%;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -179,8 +146,6 @@
 }
 
 
-
-
 /* Responsive Table */
 @media (max-width: 768px) {
 
@@ -194,47 +159,11 @@
   .copyMessage {
     width: 50%;
     left: 5rem;
-    bottom: 4rem;
+    bottom: 8rem;
   }
 
   .table {
     table-layout: auto;
   }
-/* 
-  .tableContainer {
-    width: 90%;
-    height: 60%;
-  }
 
-  .table {
-    border: 0;
-  }
-
-  .table thead {
-    display: none;
-  }
-
-  .table tr {
-    display: block;
-    margin-bottom: 20px;
-    border: 1px solid #ddd;
-  }
-
-  .table td {
-    display: block;
-    text-align: right;
-    position: relative;
-    padding-left: 50%;
-    border-bottom: 1px solid #ddd;
-  }
-
-  .table td::before {
-    content: attr(data-label);
-    position: absolute;
-    left: 10px;
-    width: 45%;
-    white-space: nowrap;
-    font-weight: bold;
-    text-align: left;
-  } */
 }

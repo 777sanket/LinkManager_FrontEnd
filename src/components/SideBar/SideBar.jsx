@@ -11,7 +11,6 @@ import styles from "./sideBar.module.css";
 export default function SideBar({ active, setActive, isOpen, setIsOpen }) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
-  // Add or remove 'no-scroll' class on the body
   useEffect(() => {
     if (isMenuOpen) {
       document.body.classList.add("no-scroll");
@@ -22,10 +21,6 @@ export default function SideBar({ active, setActive, isOpen, setIsOpen }) {
       document.body.classList.remove("no-scroll");
     };
   }, [isMenuOpen]);
-
-  // const toggleMenu = () => {
-  //   setIsMenuOpen(!isMenuOpen);
-  // };
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
@@ -59,8 +54,8 @@ export default function SideBar({ active, setActive, isOpen, setIsOpen }) {
                 }`}
                 onClick={() => {
                   setActive(item.name);
-                  setIsMenuOpen(false); // Close menu on selection (for mobile)
-                  setIsOpen(false); // Close sidebar on selection (for desktop)
+                  setIsMenuOpen(false);
+                  setIsOpen(false);
                 }}
               >
                 <img src={item.icon} alt={item.name} />
@@ -78,8 +73,8 @@ export default function SideBar({ active, setActive, isOpen, setIsOpen }) {
               }`}
               onClick={() => {
                 setActive("Setting");
-                setIsMenuOpen(false); // Close menu on selection (for mobile)
-                setIsOpen(false); // Close sidebar on selection (for desktop)
+                setIsMenuOpen(false);
+                setIsOpen(false);
               }}
             >
               <img src={Setting} alt="Settings" />

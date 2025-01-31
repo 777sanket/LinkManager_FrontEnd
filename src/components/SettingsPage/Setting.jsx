@@ -6,11 +6,6 @@ import styles from "./setting.module.css";
 import { use } from "react";
 
 export default function Setting({ userData, setUserData }) {
-  // const [userData, setUserData] = useState({
-  //   name: "",
-  //   email: "",
-  //   mobile: "",
-  // });
   const [loading, setLoading] = useState(false);
   const [message, setMessage] = useState("");
   const [error, setError] = useState("");
@@ -27,10 +22,10 @@ export default function Setting({ userData, setUserData }) {
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setFormData({ ...formData, [name]: value }); // ✅ Update local state
+    setFormData({ ...formData, [name]: value });
   };
 
-  const navigate = useNavigate(); // ✅ Initialize useNavigate
+  const navigate = useNavigate();
 
   useEffect(() => {
     async function fetchUserData() {
@@ -74,11 +69,6 @@ export default function Setting({ userData, setUserData }) {
   };
 
   const handleDelete = async () => {
-    // const confirmDelete = window.confirm(
-    //   "Are you sure you want to delete your account? This action is irreversible!"
-    // );
-    // if (!confirmDelete) return;
-
     setLoading(true);
     setMessage("");
     setError("");
@@ -90,8 +80,8 @@ export default function Setting({ userData, setUserData }) {
       setMessage("Account deleted successfully. Redirecting...");
 
       setTimeout(() => {
-        localStorage.removeItem("token"); // Clear user session
-        navigate("/"); // ✅ Redirect to home page after deletion
+        localStorage.removeItem("token");
+        navigate("/");
       }, 300);
     } catch (error) {
       setError("Failed to delete account. Please try again.");
@@ -110,9 +100,6 @@ export default function Setting({ userData, setUserData }) {
         onCancel={closeDeleteModal}
       />
 
-      {/* {message && <div className={styles.successMessage}>{message}</div>}
-      {error && <div className={styles.errorMessage}>{error}</div>} */}
-
       <form className={styles.formContainer} onSubmit={handleEdit}>
         <div className={styles.formGroup}>
           <div className={styles.inputGroup}>
@@ -121,12 +108,8 @@ export default function Setting({ userData, setUserData }) {
               type="text"
               id="name"
               name="name"
-              // value={userData.name}
-              value={formData.name} // ✅ Update input value
-              onChange={
-                // (e) => setUserData({ ...userData, name: e.target.value })
-                handleChange
-              }
+              value={formData.name}
+              onChange={handleChange}
               disabled={loading}
             />
           </div>
@@ -137,13 +120,8 @@ export default function Setting({ userData, setUserData }) {
               type="email"
               id="email"
               name="email"
-              // value={userData.email}
-              value={formData.email} // ✅ Update input value
-              onChange={
-                // (e) =>
-                // setUserData({ ...userData, email: e.target.value })
-                handleChange
-              }
+              value={formData.email}
+              onChange={handleChange}
               disabled={loading}
             />
           </div>
@@ -154,13 +132,8 @@ export default function Setting({ userData, setUserData }) {
               type="text"
               id="mobile"
               name="mobile"
-              // value={userData.mobile}
-              value={formData.mobile} // ✅ Update input value
-              onChange={
-                // (e) =>
-                // setUserData({ ...userData, mobile: e.target.value })
-                handleChange
-              }
+              value={formData.mobile}
+              onChange={handleChange}
               disabled={loading}
             />
           </div>
@@ -170,13 +143,11 @@ export default function Setting({ userData, setUserData }) {
           </button>
           <button
             type="button"
-            // onClick={handleDelete}
-            onClick={openDeleteModal} // ✅ Open delete modal
+            onClick={openDeleteModal}
             disabled={loading}
             className={styles.deleteBtn}
           >
             Delete Account
-            {/* {loading ? "Deleting..." : "Delete Account"} */}
           </button>
         </div>
       </form>

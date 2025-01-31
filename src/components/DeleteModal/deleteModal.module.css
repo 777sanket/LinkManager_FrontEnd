@@ -25,17 +25,13 @@
 }
 
 .closeIcon {
-  /* background-color: black; */
   width: 100%;
   display: flex;
   justify-content: end;
   cursor: pointer;
-  /* border: 1px solid black; */
-  /* z-index: 5000; */
 }
 
 .bottomContainer {
-  
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -47,7 +43,6 @@
 .modalHeading {
   font-size: 0.87rem;
   font-weight: 500;
-  /* font-weight: bold; */
   margin-bottom: 20px;
 }
 

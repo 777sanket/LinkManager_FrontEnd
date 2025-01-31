@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import getDate from "../../utils/getDate";
-import { getUser, logout } from "../../services/userApi";
+import { logout } from "../../services/userApi";
 import { getInitials } from "../../utils/getInitials";
 import LinkModal from "../LinkModal/LinkModal";
 import {
@@ -9,35 +9,50 @@ import {
   Sun,
   Plus,
   Search,
-  Hamburger,
+  Evening,
+  Night,
 } from "../../utils/getDashboardImg";
 
 import styles from "./navbar.module.css";
 
 export default function Navbar({ setSearch, userData, fetchLinks }) {
   const date = getDate();
-  // const [user, setUser] = useState("");
   const [showLogout, setShowLogout] = useState(false);
   const [isLinkModalOpen, setIsLinkModalOpen] = useState(false);
   const [linkModalHeading, setLinkModalHeading] = useState("");
   const [linkModalBtnHeading, setLinkModalBtnHeading] = useState("");
-
+  const [greeting, setGreeting] = useState("Good Morning");
+  const [greetingImage, setGreetingImage] = useState(Sun);
+  const [scaleFactor, setScaleFactor] = useState(1);
   const navigate = useNavigate();
-
   const initials = getInitials(userData.name);
 
-  // useEffect(() => {
-  //   async function fetchUser() {
-  //     try {
-  //       const response = await getUser();
-  //       const data = await response.json();
-  //       setUser(data.user.name);
-  //     } catch (error) {
-  //       console.error("Error fetching user data: ", error);
-  //     }
-  //   }
-  //   fetchUser();
-  // }, []);
+  useEffect(() => {
+    const updateGreeting = () => {
+      const now = new Date();
+      const istTime = new Date(now.getTime() + 5.5 * 60 * 60 * 1000); // Convert UTC to IST
+      const hours = istTime.getUTCHours(); // Get IST hours
+
+      if (hours >= 5 && hours < 16) {
+        setGreeting("Good Morning");
+        setGreetingImage(Sun);
+        setScaleFactor(1);
+      } else if (hours >= 16 && hours < 23) {
+        setGreeting("Good Evening");
+        setGreetingImage(Evening);
+        setScaleFactor(0.4);
+      } else {
+        setGreeting("Good Night");
+        setGreetingImage(Night);
+        setScaleFactor(0.4);
+      }
+    };
+
+    updateGreeting();
+    const interval = setInterval(updateGreeting, 60 * 1000); // ✅ Update every minute
+
+    return () => clearInterval(interval); // Cleanup on unmount
+  }, []);
 
   const handleProfileClick = () => {
     setShowLogout(!showLogout);
@@ -59,6 +74,17 @@ export default function Navbar({ setSearch, userData, fetchLinks }) {
     }
   };
 
+  useEffect(() => {
+    const checkTokenExpiration = () => {
+      const token = localStorage.getItem("token");
+      if (!token) {
+        navigate("/login"); // ✅ Redirect if token is missing
+      }
+    };
+
+    checkTokenExpiration();
+  }, []);
+
   const openLinkModal = (heading, btnHeading) => {
     setLinkModalHeading(heading);
     setLinkModalBtnHeading(btnHeading);
@@ -77,10 +103,16 @@ export default function Navbar({ setSearch, userData, fetchLinks }) {
         </div>
         <div className={styles.greetings}>
           <div className={styles.sunImg}>
-            <img src={Sun} alt="sun" />
+            <img
+              src={greetingImage}
+              alt={greeting}
+              style={{ transform: `scale(${scaleFactor})` }}
+            />
           </div>
           <div className={styles.greetingText}>
-            <p>Good Morning,&nbsp; {userData.name}</p>
+            <p>
+              {greeting},&nbsp; {userData.name}
+            </p>
             <div className={styles.greetingDate}>{date}</div>
           </div>
         </div>
@@ -107,16 +139,8 @@ export default function Navbar({ setSearch, userData, fetchLinks }) {
           </div>
         </div>
 
-        {/* <button onClick={() => openLinkModal("Edit Link", "Save")}>
-          Edit{" "}
-        </button> */}
-
         <div onClick={handleProfileClick} className={styles.profileContainer}>
-          <div className={styles.initials}>
-            {/* SA */}
-            {/* {userData.name.charAt(0).toUpperCase()} */}
-            {initials}
-          </div>
+          <div className={styles.initials}>{initials}</div>
           {showLogout && (
             <button onClick={handleLogout} className={styles.logoutBtn}>
               Logout

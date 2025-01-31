@@ -10,7 +10,7 @@ export default function LinkModal({
   btnHeading,
   onClose,
   linkData,
-  refreshLinks, // ✅ Accept refreshLinks prop
+  refreshLinks,
 }) {
   const [originalLink, setOriginalLink] = useState("");
   const [remark, setRemark] = useState("");
@@ -113,8 +113,8 @@ export default function LinkModal({
         setTime("");
         setFormattedDateTime("");
         setIsToggled(false);
-        refreshLinks(); // ✅ Refresh links after successful create/edit
-        onClose(); // Close the modal after successful submission
+        refreshLinks();
+        onClose();
       } else {
         const errorData = await response.json();
         alert(`Error: ${errorData.error}`);
@@ -123,7 +123,7 @@ export default function LinkModal({
       console.error("Error creating link:", error.message);
       alert("Something went wrong. Please try again.");
     } finally {
-      setLoading(false); // Stop loading
+      setLoading(false);
     }
   };
 
@@ -224,6 +224,5 @@ export default function LinkModal({
     </div>
   );
 
-  // Use ReactDOM.createPortal to render modal at root level
   return ReactDOM.createPortal(modalContent, document.body);
 }

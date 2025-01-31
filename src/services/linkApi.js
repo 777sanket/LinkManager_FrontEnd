@@ -12,16 +12,6 @@ export const createLink = (data) => {
   });
 };
 
-// export const getLinks = () => {
-//   return fetch(`${URL}/links`, {
-//     method: "GET",
-//     headers: {
-//       "Content-Type": "application/json",
-//       Authorization: `${localStorage.getItem("token")}`,
-//     },
-//   });
-// };
-
 export const getLinks = ({
   page = 1,
   limit = 10,
@@ -35,8 +25,8 @@ export const getLinks = ({
     limit,
     sortBy,
     order,
-    ...(statusSort && { statusSort }), // Only include statusSort if it is provided
-    ...(search && { search }), // Only include search if it is provided
+    ...(statusSort && { statusSort }),
+    ...(search && { search }),
   });
 
   return fetch(`${URL}/links?${params.toString()}`, {
@@ -60,7 +50,6 @@ export const editLink = (id, data) => {
 };
 
 export const deleteLink = (id) => {
-  const URL = "http://localhost:3000/api";
   return fetch(`${URL}/links/${id}`, {
     method: "DELETE",
     headers: {

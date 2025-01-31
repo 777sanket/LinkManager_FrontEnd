@@ -17,6 +17,8 @@ import Next from "../assets/next.png";
 import Prev from "../assets/prev.png";
 import Tick from "../assets/tick.png";
 import Close2 from "../assets/close2.png";
+import Evening from "../assets/evening.png";
+import Night from "../assets/night.png";
 
 export {
   Sun,
@@ -38,4 +40,6 @@ export {
   Prev,
   Tick,
   Close2,
+  Evening,
+  Night,
 };

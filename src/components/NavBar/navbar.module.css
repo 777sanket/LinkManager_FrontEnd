@@ -28,14 +28,11 @@
   position: absolute;
   top: 0;
   left: 0.5rem;
-  /* z-index: 1000; */
-  /* transform: translateX(-0.5rem); */
 }
 .greetings {
   display: flex;
   align-items: center;
   justify-content: end;
- 
   width: 20rem;
   padding-bottom: 1rem;
 }
@@ -49,6 +46,7 @@
   align-items: start;
   flex-direction: column;
   line-height: 0.3rem;
+  margin-right: 1rem;
 }
 
 
@@ -57,7 +55,6 @@
   align-items: center;
   justify-content: end;
   gap: 6rem;
-  /* padding: 0 1.5rem; */
   width: 50%;
 }
 
@@ -122,35 +119,6 @@
   font-size: 1rem;
 }
 
-/* .profileContainer {
-  display: grid;
-  place-items: center;
-  margin-right: 1.5rem;
-  align-items: center;
-  justify-content: center;
-  height: 2.7rem;
-  
-  border-radius: 50%;
-  background-color: #ECECF2;
-} */
-
-/* .profileContainer {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 2.8rem;
-  height: 2.8rem;
-  border-radius: 50%;
-  background-color: #FDE48A;
-  font-family: "Manrope", sans-serif;
-  font-size: 1rem;
-  color: #923E0E;
-  margin-right: 1.5rem;
-  text-align: center;
-  padding: 0;
-  font-weight: 600;
-} */
-
 .profileContainer {
   position: relative;
   margin-right: 0.5rem;
@@ -196,8 +164,6 @@
 
 
 
-
-
 /* Media queries */
 
 
@@ -205,7 +171,7 @@
   .navbarContainer {
     border-bottom: none;
     position: fixed;
-    /* overflow: hidden; */
+    
   }
 
   .leftPart {
@@ -229,7 +195,6 @@
 
   .greetingText {
     font-size: 0.85rem;
-    /* flex-wrap: wrap; */
     line-height: 0.9rem;
   }
 

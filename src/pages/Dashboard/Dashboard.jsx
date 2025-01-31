@@ -29,7 +29,7 @@ export default function Dashboard() {
     search: search,
   });
 
-  // ✅ Fetch Links Function (Now in Dashboard)
+  // Fetch Links Function (Now in Dashboard)
   const fetchLinks = async () => {
     try {
       const response = await getLinks(filters);
@@ -94,7 +94,6 @@ export default function Dashboard() {
     <div className={styles.dashboardContainer}>
       <div className={styles.navBarItem}>
         <Navbar
-          // search={search}
           userData={userData}
           setSearch={setSearch}
           fetchLinks={fetchLinks}
