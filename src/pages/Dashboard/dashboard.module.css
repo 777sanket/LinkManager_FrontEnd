@@ -38,7 +38,6 @@
 }
 
 .sideBarItem {
-  z-index: 1000;
   width: 20%;
   overflow: none;
 }
