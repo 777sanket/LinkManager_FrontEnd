@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import ReactDOM from "react-dom";
 import {
   Dash,
   Link,
@@ -39,6 +40,12 @@ export default function SideBar({ active, setActive, isOpen, setIsOpen }) {
         <img src={Hamburger} alt="Menu" />
       </div>
 
+      {/* {ReactDOM.createPortal(
+        <div className={styles.hamburgerIcon} onClick={toggleMenu}>
+          <img src={Hamburger} alt="Menu" />
+        </div>,
+        document.body
+      )} */}
       <div
         className={`${styles.sideBarContainer} ${
           isMenuOpen ? styles.open : ""
